@@ -17,3 +17,11 @@ def test_score_of_single_strike():
 def test_score_of_spare():
     total_score = bowling.score_cruncher("5/ -- -- -- -- -- -- -- -- --")
     assert total_score == 10
+
+def test_score_of_ten():
+    total_score = bowling.score_cruncher("-1 -1 1- 1- -1 -1 1- 1- 1- -1")
+    assert total_score == 10
+
+def test_score_of_spare_with_another_frame():
+    total_score = bowling.score_cruncher("5/ 1- -- -- -- -- -- -- -- --")
+    assert total_score == 12
