@@ -1,4 +1,4 @@
-scores_per_frame
+
 
 def score_cruncher(frames):
     scores_per_frame = frames.split(" ")
@@ -21,10 +21,13 @@ def parse_roll(roll):
     else:
         return int(roll)
     
-def frame_score(frame, index_of_frame):
+def frame_score(frame, next_frame):
     if list(frame) == ['x']:
         return 10
     elif list(frame)[-1] == '/':
-        return 10 + parse_roll(scores_per_frame[index_of_frame+1][0])
+        if len(frame) == 3:
+            return 10 + parse_roll(frame[2])
+
+        return 10 + parse_roll(next_frame[0])
     else:
         return parse_roll(frame[0]) + parse_roll(frame[1])
