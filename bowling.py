@@ -12,13 +12,13 @@ def frame_score(frame_count, scores_per_frame):
     frame = scores_per_frame[frame_count]
         
     if frame[0] == 'x':
-        next_frame = scores_per_frame[frame_count + 1]
-        next_next_frame = scores_per_frame[frame_count + 2]
+        second_frame = scores_per_frame[frame_count + 1]
+        third_frame = scores_per_frame[frame_count + 2]
 
-        return strike_calculation(frame, next_frame, next_next_frame)
+        return strike_calculation(frame, second_frame, third_frame)
     elif frame[1] == '/':
-        next_frame = scores_per_frame[frame_count + 1] if frame_count < 9 else "--"
-        return spare_calculation(frame, next_frame)
+        second_frame = scores_per_frame[frame_count + 1] if frame_count < 9 else "--"
+        return spare_calculation(frame, second_frame)
     else:
         return parse_roll(frame[0]) + parse_roll(frame[1])
 
@@ -42,3 +42,13 @@ def strike_calculation(initial_frame, second_frame, third_frame):
         return 10 + parse_roll(second_frame[0]) + parse_roll(third_frame[0])
     else:
         return 10 + parse_roll(second_frame[0]) + parse_roll(second_frame[1]) 
+    
+
+
+class Frame:
+
+    def __init__(self, score):
+        self.score = score
+
+    def get_score(self):
+        return self.score
