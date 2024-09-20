@@ -25,3 +25,11 @@ def test_score_of_ten():
 def test_score_of_spare_with_another_frame():
     total_score = bowling.score_cruncher("5/ 1- -- -- -- -- -- -- -- --")
     assert total_score == 12
+
+def test_score_of_three_spares_with_another_frame():
+    total_score = bowling.score_cruncher("5/ 1/ 4/ 2- -- -- -- -- -- --")
+    assert total_score == 39
+
+def test_score_of_spare_on_last_frame():
+    total_score = bowling.score_cruncher("-- -- -- -- -- -- -- -- -- 5/1")
+    assert total_score == 12
