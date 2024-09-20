@@ -26,7 +26,7 @@ def parse_roll(roll):
 def frame_score(frame, next_frame):
     if list(frame) == ['x']:
         if next_frame[0] == 'x':
-            return 10 + frame_score(next_frame, None)
+            return 10 + frame_score(next_frame, ["put something here"])
         return 10 + parse_roll(next_frame[0]) + parse_roll(next_frame[1])
     
     elif list(frame)[1] == '/':
