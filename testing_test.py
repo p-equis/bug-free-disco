@@ -33,3 +33,11 @@ def test_score_of_three_spares_with_another_frame():
 def test_score_of_spare_on_last_frame():
     total_score = bowling.score_cruncher("-- -- -- -- -- -- -- -- -- 5/1")
     assert total_score == 12
+
+def test_score_of_double_strike():
+    total_score = bowling.score_cruncher("x x -- -- -- -- -- -- -- --")
+    assert total_score == 30
+
+def test_score_of_strike_and_two_rolls():
+    total_score = bowling.score_cruncher("x 35 -- -- -- -- -- -- -- --")
+    assert total_score == 26

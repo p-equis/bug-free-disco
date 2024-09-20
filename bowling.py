@@ -1,7 +1,7 @@
 
 
 def score_cruncher(frames):
-    scores_per_frame = frames.split(" ")
+    scores_per_frame = frames.split(' ')
 
     total = 0
 
@@ -16,18 +16,24 @@ def score_cruncher(frames):
 
 
 def parse_roll(roll):
-    if roll == "-":
+    if roll == '-':
         return 0
+    elif roll == 'x':
+        return 10
     else:
         return int(roll)
     
 def frame_score(frame, next_frame):
     if list(frame) == ['x']:
-        return 10
-    elif list(frame)[-1] == '/':
+        if next_frame[0] == 'x':
+            return 10 + frame_score(next_frame, None)
+        return 10 + parse_roll(next_frame[0]) + parse_roll(next_frame[1])
+    
+    elif list(frame)[1] == '/':
         if len(frame) == 3:
-            return 10 + parse_roll(frame[2])
-
+            return 10 + (2 * parse_roll(frame[2]))
+        
         return 10 + parse_roll(next_frame[0])
+    
     else:
         return parse_roll(frame[0]) + parse_roll(frame[1])
