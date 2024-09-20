@@ -3,7 +3,6 @@ def score_cruncher(frames):
 
     total = 0
 
-
     for frame_count in range(10):
         total += frame_score(frame_count, scores_per_frame)
 
