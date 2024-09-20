@@ -17,11 +17,8 @@ def frame_score(frame_count, scores_per_frame):
 
         return strike_calculation(frame, next_frame, next_next_frame)
     elif frame[1] == '/':
-        if frame_count == 9:
-            return 10 + parse_roll(frame[2]) + parse_roll(frame[2])
-        else:
-            next_frame = scores_per_frame[frame_count + 1]
-            return spare_calculation(frame, next_frame)
+        next_frame = scores_per_frame[frame_count + 1] if frame_count < 9 else "--"
+        return spare_calculation(frame, next_frame)
     else:
         return parse_roll(frame[0]) + parse_roll(frame[1])
 
